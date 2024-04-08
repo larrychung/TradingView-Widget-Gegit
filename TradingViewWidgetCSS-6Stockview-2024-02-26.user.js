@@ -3,7 +3,7 @@
 // @namespace    https://www.tradingview.com/widget-docs/widgets/charts/advanced-chart/
 // @version      2024-02-26
 // @description  Track all markets on TradingView CSS
-// @author       You
+// @author       LARRY
 // @match        https://*.tradingview.com/chart/*
 // @icon         https://static.tradingview.com/static/images/favicon.ico
 
@@ -42,37 +42,26 @@
 
     const idTV = "NYSE:V";
 
-    // 添加事件监听器，监视剪贴板变化
-    document.addEventListener('paste', event => {
-        // 阻止默认粘贴行为，避免将剪贴板内容粘贴到其他元素
-        event.preventDefault();
 
-        // 从剪贴板中获取文本
-        const text = event.clipboardData.getData('text/plain');
 
-        // 处理获取到的文本，这里可以根据需求进行进一步操作
-        console.log('Text from clipboard:', text);
-
-        // 示例：将剪贴板文本赋值给idTV变量
-        idTV = text;
-
-        // 在这里可以继续处理idTV或执行其他操作
-    });
-
-    // 示例：在页面加载后立即尝试读取剪贴板中的文本
-    document.addEventListener('DOMContentLoaded', () => {
-        navigator.clipboard.readText()
-            .then(text => {
-            console.log('Text from clipboard:', text);
-            // 示例：将剪贴板文本赋值给idTV变量
-            idTV = text;
-            // 在这里可以继续处理idTV或执行其他操作
+// 读取剪贴板内容并保存到GM存储中
+function readClipboardAndSave() {
+    navigator.clipboard.readText()
+        .then(text => {
+            // 将剪贴板内容保存到GM存储中
+            GM_setValue('clipboardContent', text);
+            console.log('剪贴板内容已保存:', text);
         })
-            .catch(err => {
-            console.error('Error reading from clipboard: ', err);
+        .catch(error => {
+            console.error('无法读取剪贴板内容:', error);
         });
-    });
+}
 
+// 监听剪贴板内容变化
+document.addEventListener('clipboard', readClipboardAndSave);
+
+// 初次加载时也调用一次以保存当前剪贴板内容
+readClipboardAndSave();
 
 
 

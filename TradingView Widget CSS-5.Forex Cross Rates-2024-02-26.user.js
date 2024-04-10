@@ -15,10 +15,6 @@
 // ==/UserScript==
 
 
-
-
-
-
 (function() {
     'use strict';
 
@@ -39,11 +35,10 @@
 
 
 
-
     // Add custom style using GM_addStyle 強制使用格式
     let customBackgroundColor51 = "#29002b"; //darker
     let customBackgroundColor52 = "#74007a"; //lighter
-    GM_addStyle(".tradingview-popup-script51{background-color: " + customBackgroundColor51 + " !important }");
+    GM_addStyle(".tradingview-popup-script51{background-color: " + customBackgroundColor51 + " !important ; }");
     GM_addStyle(".tradingview-popup-script52{background-color: " + customBackgroundColor52 + " !important }");
 
 
@@ -69,9 +64,6 @@
 
 
 
-
-
-
     // Create a function to add the TradingView widget
     function addTradingViewWidget() {
         var container = document.createElement('div');
@@ -79,12 +71,12 @@
         container.innerHTML = `
 
         <style>
-       .tradingview-widget-container4 .blue-text {
+       .tradingview-widget-container51 .blue-text {
         font-size: 16px; /* 調整字體大小為 16 像素 */
         }
        </style>
 
-            <div class="tradingview-widget-container4">
+            <div class="tradingview-widget-container51"  >
                 <div class="tradingview-widget-container__widget"></div>
                 <div class="tradingview-widget-copyright">
                     <a href="https://www.tradingview.com/widget-docs/widgets/heatmaps/forex-cross-rates/" rel="noopener nofollow" target="_blank">
@@ -96,9 +88,6 @@
         `;
 
 
-
-
-
         document.body.appendChild(container);
 
         // Load the TradingView widget script
@@ -107,38 +96,29 @@
         script.async = true;
 
 
-
-
         script.innerHTML = `
            {
-  "width": "770",
-  "height": "400",
-  "currencies": [
-    "TWD",
-    "USD",
-    "EUR",
-    "JPY",
-    "GBP",
-    "CHF",
-    "AUD",
-    "NZD"
-
-  ],
-  "isTransparent": true,
-  "colorTheme": "dark",
-  "locale": "en"
-}
-
+              "width": "770",
+              "height": "400",
+              "currencies": [
+                "TWD",
+                "USD",
+                "EUR",
+                "JPY",
+                "GBP",
+                "CHF",
+                "AUD",
+                "NZD"
+              ],
+              "isTransparent": true,
+              "colorTheme": "dark",
+              "locale": "en"
+           }
         `;
 
 
 
         container.appendChild(script);
-
-
-
-
-
 
 
 
@@ -160,10 +140,6 @@
             }
             return maxIndex;
         }
-
-
-
-
 
 
 
@@ -199,15 +175,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
         // Create a function to toggle the CSS window size
         function toggleCSSWindowSize() {
             if (container.style.width === '600px') {
@@ -218,22 +185,6 @@
                 container.style.height = '400px';
             }
         }
-
-
-
-
-        // Create a button to toggle the CSS window size
-        var toggleButton = document.createElement('button');
-        toggleButton.textContent = 'T';
-        toggleButton.style.position = 'absolute';
-        toggleButton.style.top = '10px';
-        toggleButton.style.right = '10px';
-        toggleButton.style.zIndex = 'auto';
-        toggleButton.addEventListener('click', toggleCSSWindowSize);
-
-        // Add the button to the container
-        container.appendChild(toggleButton);
-
 
 
         // Create a function to hide the CSS window
@@ -247,7 +198,7 @@
         hideButton.textContent = 'H';
         hideButton.style.position = 'absolute';
         hideButton.style.top = '10px';
-        hideButton.style.right = '40px';
+        hideButton.style.right = '20px';
         hideButton.style.zIndex = 'auto';
         hideButton.addEventListener('click', hideCSSWindow);
         hideButton.style.backgroundColor = customBackgroundColor52;
@@ -264,22 +215,23 @@
         }
 
         // Create a button to restore the CSS window
-        var restoreButton = document.createElement('button');
+        var restoreButton = document.createElement('div');
+        restoreButton.id = 'mylarryButton'; // 给按钮设置唯一的ID
         restoreButton.textContent = 'FORX';
         restoreButton.style.position = 'absolute';
-        restoreButton.style.bottom = '10px';
-        restoreButton.style.left = '192px';
+        restoreButton.style.bottom = '1%';
+        restoreButton.style.left = '183px';
         restoreButton.style.zIndex = '10000';
         restoreButton.addEventListener('click', restoreCSSWindow);
         restoreButton.style.borderRadius = '8px';
+        restoreButton.style.width = "40px"; // 设置按钮宽度
+        restoreButton.style.textAlign = 'center'; // 设置文本内容水平居中
+        restoreButton.style.cursor = 'pointer'; // 设置鼠标指针形状为指针
         restoreButton.style.backgroundColor = customBackgroundColor52;
 
 
         // Add the button to the container
         container.appendChild(restoreButton);
-
-
-
 
 
         // 模擬點擊隱藏按鈕
@@ -288,9 +240,7 @@
 
         // Hide the CSS window when it's created
         hideCSSWindow();
-
     }
-
 
 
     // Call the function to add the TradingView widget

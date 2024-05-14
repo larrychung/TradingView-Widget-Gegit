@@ -15,7 +15,6 @@
 // @downloadURL https://update.greasyfork.org/scripts/404756/YouTube%20Volume%20Curve%20Designer.user.js
 
 // @require     https://github.com/larrychung/TradingView-Widget-Gegit/raw/main/jquery.min.js
-// @require     https://github.com/larrychung/TradingView-Widget-Gegit/raw/main/Permanent%20Videos%20Progress%20Bar%20for%20ALL-Larry-2024-04-11.user.js
 
 // ==/UserScript==
 

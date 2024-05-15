@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="mdc-typography">
+<head>
+   <meta charset="utf-8">
+  <title>Volume Booster</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="../css/popup.css" rel="stylesheet">
+  <script src="../js/libs/jquery.min.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+  <img class="header-icon" src="../icon/19.svg" alt="Volume Booster">
+  <h1 class="header-name">Volume Booster</h1>
+  <span class="header-description"></span>
+</header>
+
+<div class="announcement">
+  <button class="announcement-close" tabindex="-1">×</button>
+  <div class="announcement-title"></div>
+  <div class="announcement-message"></div>
+</div>
+
+
+<div class="volume-range">
+  <input id="volume-range" class="volume-range-input" type="range" value="100" min="0" max="600" step="10" autofocus>
+</div>
+
+<div class="volume-info">
+  <span class="volume-info-min">0 %</span>
+  <span class="volume-info-current">
+    Volume:
+    <span id="volume-current" class="volume-info-current-value"></span> %
+  </span>
+  <span class="volume-info-max">600 %</span>
+</div>
+
+<div class="tabs">
+  <div class="tabs-title"></div>
+  <div class="tabs-list"></div>
+</div>
+
+<div class="footer">
+  <button type="button" class="button_view returnToDefaultVolumeLevel">Reset</button>
+</div>
+
+<script src="../js/popup.js"></script>
+
+<template id="tab-template">
+  <a href="#" class="tab">
+    <div class="tab-item tab-icon">
+      <img class="tab-icon-image" src="" alt="">
+    </div>
+    <div class="tab-item tab-title"></div>
+  </a>
+</template>
+
+</body>
+</html>

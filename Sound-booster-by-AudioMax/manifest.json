@@ -1,0 +1,65 @@
+{
+    "background": {
+        "scripts": [
+            "js\/background.js"
+        ]
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "icon\/icon-19.png",
+            "38": "icon\/icon-38.png"
+        },
+        "default_popup": "html\/popup.html",
+        "default_title": "Volume Booster"
+    },
+    "commands": {
+        "decrease_volume": {
+            "description": "Decrease volume",
+            "suggested_key": {
+                "default": "Alt+Down"
+            }
+        },
+        "increase_volume": {
+            "description": "Increase volume",
+            "suggested_key": {
+                "default": "Alt+Up"
+            }
+        }
+    },
+    "content_scripts": [
+        {
+            "css": [
+                "css\/content.css"
+            ],
+            "js": [
+                "\/js\/libs\/jquery.min.js",
+                "\/js\/content.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "default_locale": "en",
+    "description": "__MSG_description__",
+    "icons": {
+        "128": "icon\/icon-128.png",
+        "16": "icon\/icon-16.png",
+        "32": "icon\/icon-32.png",
+        "48": "icon\/icon-48.png"
+    },
+    "manifest_version": 2,
+    "name": "__MSG_name__",
+    "permissions": [
+        "tabCapture",
+        "<all_urls>",
+        "tabs",
+        "storage"
+    ],
+    "update_url": "https:\/\/clients2.google.com\/service\/update2\/crx",
+    "version": "2.4",
+    "web_accessible_resources": [
+        "css\/content.css"
+    ]
+}
